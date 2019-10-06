@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.778476-pre1" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DejamobileSDK\DejamobileSDK.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\UserProfilePage.xaml.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DigitizedCardsPage.xaml.cs">
+      <DependentUpon>DigitizedCardsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DigitizedCardAnalyticsPage.xaml.cs">
+      <DependentUpon>DigitizedCardAnalyticsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewCardPage.xaml.cs">
+      <DependentUpon>NewCardPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

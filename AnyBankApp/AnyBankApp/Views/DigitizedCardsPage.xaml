@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AnyBankApp.Views.DigitizedCardsPage"
+             x:Name="DigitizedCardsPageName"
+             Title="{Binding Title}"
+             Appearing="DigitizedCardsPage_Appearing">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddCard_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <ListView x:Name="DigitizedCardsListView"
+                ItemsSource="{Binding DigitizedCards}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"                
+                ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid x:Name="Card">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Text="{Binding IdString, StringFormat='Digitized Card Number : {0}'}"
+                                        d:Text="Digitized Card Identifier"
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center"
+                                        Grid.Column="0"
+                                        Margin="4"/>
+
+                                <Label  Text="{Binding PrimaryAccountNumber, StringFormat='Account Number : {0}'}" 
+                                        d:Text="Primary Account Number"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemTextStyle}"
+                                        FontSize="16" 
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Center"
+                                        Grid.Column="1"
+                                        Margin="4"/>
+                                
+                                <Label  Text="{Binding CardSchemeName}" 
+                                        d:Text="Card Scheme"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemTextStyle}"
+                                        FontSize="16"
+                                        Grid.Column="2"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Center"
+                                        Margin="4"/>
+                                
+                                <Button Text="Delete" 
+                                        Command="{Binding BindingContext.DeleteCardCommand, Source={x:Reference Name=DigitizedCardsPageName}}"
+                                        CommandParameter="{Binding .}"
+                                        Grid.Column="3"
+                                        BackgroundColor="OldLace"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>
